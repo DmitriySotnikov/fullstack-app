@@ -1,0 +1,13 @@
+# Hello there! 👋
+
+This is a small fullstack application based on the Nest.js and Vue libraries.
+
+It implements user authorization and authentication with verification through a simple captcha. 
+
+The backend is built on the principles of clean architecture.
+
+# Stack used
+
+client: Vue, Vuex.
+
+backend: Nest.js, bcrypt, svg-captcha, mysql, typeorm.
