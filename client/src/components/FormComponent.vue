@@ -59,6 +59,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import { useToast } from "vue-toast-notification";
+import { authActions } from "../config/actions";
 import "vue-toast-notification/dist/theme-sugar.css";
 
 export default {
@@ -80,15 +81,17 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchCaptcha: "auth/fetchCaptcha",
-      fetchVerifyCaptcha: "auth/verifyCaptcha",
-      login: "auth/login",
-      registration: "auth/registration",
+      fetchCaptcha: authActions.FETCH_CAPTCHA,
+      fetchVerifyCaptcha: authActions.FETCH_VERIFY_CAPTCHA,
+      login: authActions.LOGIN,
+      registration: authActions.REGISTRATION,
+      refresh: authActions.REFRESH_TOKEN,
     }),
     async handleSubmit({ event, email, password }) {
       ///
       event.preventDefault();
       const $toast = useToast();
+      this.value = "";
 
       if (
         !RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/).test(email)
@@ -148,8 +151,8 @@ export default {
       const { isVerify, error } = await this.fetchVerifyCaptcha({
         captchaValue: this.value,
       });
-      if(error) {
-        $toast.error(error)
+      if (error) {
+        $toast.error(error);
       }
       if (this.auth.isCaptchaVerified) {
         this.vizible = false;
@@ -167,7 +170,7 @@ export default {
   computed: {
     ...mapState(["auth"]),
   },
-  mounted() {},
+  // mounted() {},
 };
 </script>
 

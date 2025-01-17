@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { BcryptRepository } from 'src/domain/repositories/bcrypt.repository';
+import { DomainBcryptService } from 'src/domain/services/domainBcrypt.service';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
-export class BcryptService implements BcryptRepository {
+export class BcryptService implements DomainBcryptService {
   private readonly saltRounds = 10;
-  
+
   async compare({
     password,
     hash,

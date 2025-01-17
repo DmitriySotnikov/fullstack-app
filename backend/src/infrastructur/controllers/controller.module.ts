@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
-import { UserUseCasesProxyModule } from '../useCasesProxy/user.usecases-proxy.module';
-import { UserController } from './user.controller';
+import { AuthUseCasesProxyModule } from '../useCasesProxy/auth.usecases-proxy.module';
+import { AuthController } from './auth.controller';
 import { CaptchaUsecaseProxyModule } from '../useCasesProxy/captcha.usecases-proxy.module';
 import { CaptchaController } from './captcha.controller';
+import { JWTUsecaseProxyModule } from '../useCasesProxy/jwt.usecase-proxi.module';
 
 @Module({
   imports: [
     CaptchaUsecaseProxyModule.register(),
-    UserUseCasesProxyModule.register(),
+    AuthUseCasesProxyModule.register(),
+    JWTUsecaseProxyModule.register(),
   ],
   providers: [],
-  controllers: [UserController, CaptchaController],
+  controllers: [AuthController, CaptchaController],
 })
 export class ControllersModule {}

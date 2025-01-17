@@ -11,7 +11,6 @@ import { mapState } from "vuex";
 import FormComponent from "@/components/FormComponent.vue";
 import NavComponent from "@/components/NavComponent.vue";
 
-
 export default defineComponent({
   name: "LoginView",
   components: {

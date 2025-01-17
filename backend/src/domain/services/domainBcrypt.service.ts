@@ -1,4 +1,4 @@
-export abstract class BcryptRepository {
+export abstract class DomainBcryptService {
   abstract hash({ password }: { password: string }): Promise<string>;
   abstract compare({
     password,

@@ -4,7 +4,7 @@ import { CaptchaRepository } from 'src/infrastructur/orms/repositories/captcha.r
 import { BcryptService } from 'src/infrastructur/bcrypt/bcrypt.service';
 import { UserEntityRepository } from 'src/domain/repositories/user.repository';
 import { CaptchaEntityRepository } from 'src/domain/repositories/captcha.repository';
-import { BcryptRepository } from 'src/domain/repositories/bcrypt.repository';
+import { DomainBcryptService } from 'src/domain/services/domainBcrypt.service';
 import { TypeOrmCofigModule } from '../typeOrm/typeorm.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MappersModule } from 'src/infrastructur/mappers/mappers.module';
@@ -26,7 +26,7 @@ import { models } from '../typeOrm/models';
       useClass: CaptchaRepository,
     },
     {
-      provide: BcryptRepository,
+      provide: DomainBcryptService,
       useClass: BcryptService,
     },
     BcryptService,
@@ -37,7 +37,7 @@ import { models } from '../typeOrm/models';
     CaptchaRepository,
     CaptchaEntityRepository,
     BcryptService,
-    BcryptRepository,
+    DomainBcryptService,
     UserEntityRepository,
     UserRepository,
     MappersModule,

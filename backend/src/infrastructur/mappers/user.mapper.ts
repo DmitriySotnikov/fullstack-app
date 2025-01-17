@@ -14,8 +14,7 @@ export class UserMapper {
       id: user.id,
       firstname: user.firstname,
       lastname: user.lastname,
-      email: user.email,
-      userCaptchaId: user.userCaptchaId,
+      email: user.email
     });
   }
 
@@ -25,7 +24,6 @@ export class UserMapper {
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
-      userCaptchaId: user.userCaptchaId,
       password: user.password,
     });
   }
@@ -40,6 +38,17 @@ export class UserMapper {
       email: user.email,
       password: user.password,
       userCaptchaId,
+    });
+  }
+
+  fromUserWithPasswordToUserWithoutPassword(
+    user: UserWithPassword,
+  ): UserWithoutPassword {
+    return new UserWithoutPassword({
+      id: user.id,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
     });
   }
 }
