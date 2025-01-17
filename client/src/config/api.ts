@@ -8,4 +8,5 @@ export const urls = {
   LOGIN_USER: "/login",
   REGISTRATION_USER: "/registration",
   REFRESH_TOKEN: "/refresh",
+  LOGOUT: "/logout",
 };

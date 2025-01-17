@@ -31,23 +31,20 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log("Ошибка при выполнении запроса:", (store as any).state.auth.accessToken);
     if (!(store as any).state.auth.accessToken) {
       return
     }
-    if (error.response.status === 401 && error.config && !error.config._retry) {
+    if (error?.response?.status === 401 && error?.config && !error.config._retry) {
       error.config._retry = true;
       try {
         ///
         await store.dispatch(authActions.REFRESH_TOKEN);
-        console.log("Токен обновлен:", (store as any).state.auth.accessToken);
         return axiosInstance(error.config);
       } catch (refreshError) {
-        console.log("Ошибка при обновлении токена:", refreshError);
-        store.dispatch("auth/logout");
+        await store.dispatch("auth/logout");
       }
     }
-    store.dispatch("auth/logout");
+    await store.dispatch("auth/logout");
     return Promise.reject(error);
   }
 );

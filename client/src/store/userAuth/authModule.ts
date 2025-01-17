@@ -93,7 +93,7 @@ export const authModule = {
       commit: Commit;
       dispatch: Dispatch;
     }) => await UserAuthActions.getUserData({ state, commit, dispatch }),
-    logout: ({ commit }: { commit: Commit }) =>
-      UserAuthActions.logout({ commit }),
+    logout: async ({ commit }: { commit: Commit }) =>
+      await UserAuthActions.logout({ commit }),
   },
 };

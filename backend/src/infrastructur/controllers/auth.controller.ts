@@ -143,4 +143,12 @@ export class AuthController {
 
     return response.send(user);
   }
+
+  @UseGuards(AccessJwtAuthGuard)
+  @Get(routes.LOGOUT)
+  @ErrorHandler()
+  async logout(@Req() request: Request, @Res() response: Response) {
+    response.clearCookie('refreshToken');
+    return response.send({ status: 'success' });
+  }
 }

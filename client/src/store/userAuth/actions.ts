@@ -79,13 +79,13 @@ export class UserAuthActions {
         commit("setToken", accessToken);
         commit("setIsAuthenticated", true);
         localStorage.setItem("accessToken", accessToken);
-        return
+        return;
       }
       commit("setIsAuthenticated", false);
-      commit('setToken', null);
+      commit("setToken", null);
       dispatch("auth/logout");
     } catch (error) {
-      return error
+      return error;
     }
   }
 
@@ -138,7 +138,7 @@ export class UserAuthActions {
     dispatch: Dispatch;
   }) {
     try {
-      const response = await await axiosInstance.post(urls.GET_USER_DATA, {
+      const response = await axiosInstance.post(urls.GET_USER_DATA, {
         email: state.user.email,
       });
       if (response?.data?.id) {
@@ -150,9 +150,14 @@ export class UserAuthActions {
     }
   }
 
-  static logout({ commit }: { commit: Commit }) {
+  static async logout({ commit }: { commit: Commit }) {
+    const response = await axiosInstance.get(urls.LOGOUT);
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userEmail");
     commit("clearAuth");
+    if (response?.data?.status === "success") {
+      return true;
+    }
+    return false;
   }
 }

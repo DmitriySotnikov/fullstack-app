@@ -6,9 +6,10 @@
           <h1>Home page</h1>
         </div>
         <div>
-          <button class="home__logout-btn" @click="() => logout()">Logout</button>
+          <button class="home__logout-btn" @click="logoutHandler">
+            Logout
+          </button>
         </div>
-        
       </div>
       <div class="home__wellcom_img">
         <img src="../assets/wellcom.jpg" alt="wellcom" />
@@ -28,6 +29,12 @@ export default defineComponent({
     ...mapActions({
       logout: authActions.LOGOUT,
     }),
+    async logoutHandler() {
+      const resust = await this.logout();
+      if (resust) {
+        this.$router.push({ name: "login" });
+      }
+    },
   },
 });
 </script>
@@ -37,7 +44,7 @@ export default defineComponent({
   width: 100%;
   &__title {
     width: 100%;
-    padding: 0 0 0 120px
+    padding: 0 0 0 120px;
   }
   &__wellcom_img {
     display: flex;
