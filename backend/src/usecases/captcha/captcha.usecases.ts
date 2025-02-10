@@ -7,7 +7,6 @@ import { CaptchaService } from 'src/infrastructur/capcha/capcha.service';
 export class CaptchaUsecases {
   constructor(
     private readonly captchaEntityRepository: CaptchaEntityRepository,
-    // TODO переделать на абстрактный сервис
     private readonly captchaService: CaptchaService,
   ) {}
 

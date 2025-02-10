@@ -17,7 +17,6 @@ import { LoginUseCases } from 'src/usecases/auth/login.usecase';
 import { ErrorHandler } from '../decorators/errorHandlerDecorator';
 import { AuthUseCasesProxyModule } from '../useCasesProxy/auth.usecases-proxy.module';
 import { UseCaseProxy } from '../useCasesProxy/usecase-proxy';
-// import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { JWTUsecaseProxyModule } from '../useCasesProxy/jwt.usecase-proxi.module';
 import { JWTUsecases } from 'src/usecases/JWT/JWT.usecases';
 import { CaptchaUsecaseProxyModule } from '../useCasesProxy/captcha.usecases-proxy.module';
@@ -85,7 +84,6 @@ export class AuthController {
   @Post(routes.REGISTRATION)
   @ErrorHandler()
   async registration(
-    ///
     @Req()
     request: Request,
     @Res()
@@ -102,7 +100,6 @@ export class AuthController {
   @Get(routes.REFRESH_TOKEN)
   @ErrorHandler()
   async refreshToken(
-    ///
     @Req()
     request: Request,
     @Res()

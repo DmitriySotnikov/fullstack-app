@@ -29,7 +29,6 @@ export const getTokensAndSetCookie = async ({
   });
 
   response.cookie(
-    ///
     jwtConfig.COOKIE_TOKEN_NAME,
     refreshToken,
     {

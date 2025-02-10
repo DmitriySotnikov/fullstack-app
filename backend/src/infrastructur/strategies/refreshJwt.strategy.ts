@@ -23,7 +23,6 @@ export class RefrehshJwtStrategy extends PassportStrategy(
             throw new ForbiddenException();
           }
         },
-        // ExtractJwt.fromAuthHeaderAsBearerToken(),
       ]),
       ignoreExpiration: false,
       secretOrKey: jwtConfig.SECRET,

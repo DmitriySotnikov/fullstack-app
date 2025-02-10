@@ -16,7 +16,6 @@ export class LoginUseCases {
   }): Promise<
     UserWithoutPassword | Error
   > {
-    ///
     const userModel = await this.userEntityRepository.getUserByEmail({
       email,
     });
